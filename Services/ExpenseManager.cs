@@ -19,9 +19,7 @@ namespace BudgetTrackerV2.Services
             LoadExpenses();
         }
 
-        // =====================
-        // CRUD METHODS
-        // =====================
+        // crud methods
         public void AddExpense(string name, string category, decimal amount, DateTime date)
         {
             _expenses.Add(new Expense
@@ -31,7 +29,7 @@ namespace BudgetTrackerV2.Services
                 Amount = amount,
                 Date = date
             });
-            Console.WriteLine("Expense added successfully!");
+            Console.WriteLine("Expense added successfully.");
         }
 
         public void ShowAllExpenses()
@@ -42,6 +40,7 @@ namespace BudgetTrackerV2.Services
                 return;
             }
 
+            // add color to console
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(" All Expenses ");
             Console.WriteLine("{0,-20} {1,-15} {2,10} {3,12}", "Name", "Category", "Amount", "Date");
@@ -117,7 +116,7 @@ namespace BudgetTrackerV2.Services
         }
 
         
-        // SUMMARY
+        // summary
         
         public void ShowSummaryByCategory()
         {
@@ -172,4 +171,5 @@ namespace BudgetTrackerV2.Services
             File.WriteAllText(_fileName, json);
         }
     }
+
 }
