@@ -13,6 +13,7 @@ namespace BudgetTrackerV2
 
             while (running)
             {
+                // menu options
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("\n Budget Tracker ");
                 Console.ResetColor();
@@ -26,6 +27,7 @@ namespace BudgetTrackerV2
 
                 string choice = Console.ReadLine() ?? "";
 
+                // choice 1 - add items 
                 if (choice == "1")
                 {
                     Console.Write("Expense Name: ");
@@ -34,7 +36,7 @@ namespace BudgetTrackerV2
                     Console.Write("Category: ");
                     string category = Console.ReadLine() ?? "";
 
-                    // ✅ Safe decimal input
+                    // decimal input
                     decimal amount;
                     while (true)
                     {
@@ -51,14 +53,20 @@ namespace BudgetTrackerV2
 
                     manager.AddExpense(name, category, amount, date);
                 }
+
+                // choice 2 - show all expenses
                 else if (choice == "2")
                 {
                     manager.ShowAllExpenses();
                 }
+
+                // choice 3 - remove an expense
                 else if (choice == "3")
                 {
                     manager.RemoveExpense();
                 }
+
+                // choice 4 - sort list 
                 else if (choice == "4")
                 {
                     Console.WriteLine("Sort by:");
@@ -72,16 +80,22 @@ namespace BudgetTrackerV2
                     else if (sortChoice == "3") manager.SortByCategory();
                     else Console.WriteLine("Invalid choice.");
                 }
+
+                // choice 5 - show summary of all category
                 else if (choice == "5")
                 {
                     manager.ShowSummaryByCategory();
                 }
+
+                // choice 6 - exit - close program
                 else if (choice == "6")
                 {
                     running = false;
                     manager.SaveExpenses();
-                    Console.WriteLine("Expenses saved. Goodbye!");
+                    Console.WriteLine("Expenses saved.);
                 }
+
+                // invalid choices catch
                 else
                 {
                     Console.WriteLine("Invalid choice, try again.");
@@ -89,4 +103,5 @@ namespace BudgetTrackerV2
             }
         }
     }
+
 }
